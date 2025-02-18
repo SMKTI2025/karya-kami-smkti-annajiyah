@@ -11,9 +11,30 @@ class Work extends Model
 
     protected $table = "works";
     protected $fillable = [
-        'image' , 
+        'role_user_id',
         'title', 
-        'category',
         'description', 
+        'category',
+        'image',
+        'source_code',
+        'video',
+        'documentation',
+        'meta_tags',
+        'usage_guide',
     ];
+
+    public function assessments(){
+        return $this->hasMany(Assessment::class);
+    }
+
+    public function averageScore(){
+        return $this->assessments()->avg('score');
+    }
+
+    public function roleUser() {
+        return $this->belongsTo(
+            RoleUser::class, 
+            'role_user_id'
+        ); 
+    }
 }

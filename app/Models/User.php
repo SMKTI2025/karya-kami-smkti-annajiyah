@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
@@ -44,10 +43,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected function password(): Attribute
+    public function assessments(){
+        return $this->hasMany(Assessment::class);
+    }
+
+    public function roles()
     {
-        return Attribute::make(
-            set: fn ($value) => bcrypt($value),
-        );
+        return $this->belongsToMany(
+            Role::class, 
+            'role_users', 
+            'user_id', 
+            'role_id'
+            )
+        ->using(RoleUser::class)
+        ->withTimestamps();
     }
 }

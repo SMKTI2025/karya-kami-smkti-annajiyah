@@ -34,14 +34,46 @@ class WorkResource extends Resource
                 
                 Textarea::make('description'),
                 
-                FileUpload::make('image')->directory('works'),
-                
                 Select::make('category')
                     ->options([
                         'design' => 'Design',
                         'web' => 'Web Development',
                         'art' => 'Art',
                     ]),
+
+                FileUpload::make('image')
+                    ->label('Thumbnail Karya')
+                    ->directory('works'),
+
+                FileUpload::make('source_code')
+                    ->label('Source Code')
+                    ->acceptedFileTypes([
+                        'application/zip', 'application/x-rar-compressed', 
+                        'application/x-tar', 'text/plain', 'application/x-gzip'
+                    ]),
+
+                FileUpload::make('video')
+                    ->label('Video')
+                    ->acceptedFileTypes([
+                        'video/mp4', 'video/mpeg', 'video/quicktime'
+                    ]),
+
+                FileUpload::make('documentation')
+                    ->label('Dokumentasi (PDF)')
+                    ->acceptedFileTypes(['application/pdf']),
+                
+                TextInput::make('meta_tags')
+                    ->label('Meta Tags')
+                    ->helperText('Pisahkan dengan koma, contoh: web, aplikasi, RPL'),
+               
+                Textarea::make('usage_guide')
+                    ->label('Cara Penggunaan')
+                    ->helperText('Tambahkan panduan penggunaan untuk karya ini'),
+
+                Select::make('role_user_id')
+                    ->label('Murid')
+                    ->relationship('roleUser.user', 'name') 
+                    ->required(),
             ]);
     }
 
@@ -57,6 +89,9 @@ class WorkResource extends Resource
                 
                 TextColumn::make('category')
                     ->sortable(),
+
+                TextColumn::make('roleUser.user.name')
+                    ->label('Murid'),
                 
                 TextColumn::make('created_at')
                     ->label('Created At')

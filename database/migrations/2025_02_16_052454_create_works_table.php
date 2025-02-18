@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\RoleUser;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,12 +13,22 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('works', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->string('image')->nullable();
-            $table->string('category')->nullable();
-            $table->timestamps();
+                $table->id();
+                
+                $table->foreignIdFor(RoleUser::class)
+                    ->constrained()
+                    ->onDelete('cascade');
+
+                $table->string('title');
+                $table->text('description');
+                $table->string('category');
+                $table->string('image')->nullable();
+                $table->string('source_code')->nullable();
+                $table->string('video')->nullable();
+                $table->string('documentation')->nullable();
+                $table->json('meta_tags')->nullable();
+                $table->text('usage_guide')->nullable();
+                $table->timestamps();
         });
     }
 

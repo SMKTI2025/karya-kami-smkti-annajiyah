@@ -4,16 +4,17 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
-use Illuminate\Database\Eloquent\Builder;
-use Filament\Forms;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Models\User;
+use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class UserResource extends Resource
 {
@@ -25,19 +26,23 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                
                 TextInput::make('name')
                     ->label('Name')
                     ->required(),
-                
+
                 TextInput::make('email')->label('Email')
                     ->email()
                     ->required(),
-                
+
                 TextInput::make('password')
                     ->label('Password')
                     ->password()
                     ->required(fn($record) => $record === null),
+
+                Select::make('roles')
+                    ->label('Roles')
+                    ->relationship('roles', 'name')
+                    ->preload(),
             ]);
     }
 
@@ -45,21 +50,25 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                
+                // table
                 TextColumn::make('id')
                     ->label('ID')
                     ->sortable()
                     ->searchable(),
-                
+
                 TextColumn::make('name')
                     ->label('Name')
                     ->sortable()
                     ->searchable(),
-                
+
                 TextColumn::make('email')
                     ->label('Email')
                     ->sortable()
                     ->searchable(),
+
+                TextColumn::make('roles.name')
+                    ->label('Roles')
+                    ->badge(),
                 
                 TextColumn::make('created_at')
                     ->label('Created At')
