@@ -69,11 +69,6 @@ class WorkResource extends Resource
                 Textarea::make('usage_guide')
                     ->label('Cara Penggunaan')
                     ->helperText('Tambahkan panduan penggunaan untuk karya ini'),
-
-                Select::make('role_user_id')
-                    ->label('Murid')
-                    ->relationship('roleUser.user', 'name') 
-                    ->required(),
             ]);
     }
 
@@ -89,9 +84,6 @@ class WorkResource extends Resource
                 
                 TextColumn::make('category')
                     ->sortable(),
-
-                TextColumn::make('roleUser.user.name')
-                    ->label('Murid'),
                 
                 TextColumn::make('created_at')
                     ->label('Created At')

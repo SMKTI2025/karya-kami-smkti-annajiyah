@@ -35,12 +35,6 @@ class AssessmentResource extends Resource
                     ->relationship('work', 'title')
                     ->required(),
 
-                // Menampilkan nama guru
-                Select::make('role_user_id')
-                    ->label('Guru Penilai')
-                    ->relationship('roleUser.user', 'name') 
-                    ->required(),
-
                 TextInput::make('score')
                     ->label('Nilai')
                     ->numeric()
@@ -60,9 +54,6 @@ class AssessmentResource extends Resource
             ->columns([
                 TextColumn::make('work.title')
                     ->label('Karya'),
-                    
-                TextColumn::make('roleUser.user.name')
-                    ->label('Guru Penilai'),
 
                 TextColumn::make('score')
                     ->label('Nilai'),
