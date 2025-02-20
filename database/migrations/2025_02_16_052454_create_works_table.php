@@ -14,20 +14,24 @@ return new class extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
                 $table->id();
-                
-                $table->foreignIdFor(RoleUser::class)
-                    ->constrained()
-                    ->onDelete('cascade');
 
                 $table->string('title');
                 $table->text('description');
                 $table->string('category');
-                $table->string('image')->nullable();
-                $table->string('source_code')->nullable();
-                $table->string('video')->nullable();
-                $table->string('documentation')->nullable();
-                $table->json('meta_tags')->nullable();
-                $table->text('usage_guide')->nullable();
+                
+                $table->string('image')
+                    ->nullable();
+                $table->string('source_code')
+                    ->nullable();
+                $table->string('video')
+                    ->nullable();
+                $table->string('documentation')
+                    ->nullable();
+                $table->json('meta_tags')
+                    ->nullable();
+                $table->text('usage_guide')
+                    ->nullable();
+
                 $table->timestamps();
         });
     }

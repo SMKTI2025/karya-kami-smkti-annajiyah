@@ -46,16 +46,5 @@ class User extends Authenticatable
     public function assessments(){
         return $this->hasMany(Assessment::class);
     }
-
-    public function roles()
-    {
-        return $this->belongsToMany(
-            Role::class, 
-            'role_users', 
-            'user_id', 
-            'role_id'
-            )
-        ->using(RoleUser::class)
-        ->withTimestamps();
-    }
+    
 }

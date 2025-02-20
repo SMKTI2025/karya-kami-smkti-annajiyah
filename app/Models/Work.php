@@ -11,7 +11,6 @@ class Work extends Model
 
     protected $table = "works";
     protected $fillable = [
-        'role_user_id',
         'title', 
         'description', 
         'category',
@@ -30,11 +29,5 @@ class Work extends Model
     public function averageScore(){
         return $this->assessments()->avg('score');
     }
-
-    public function roleUser() {
-        return $this->belongsTo(
-            RoleUser::class, 
-            'role_user_id'
-        ); 
-    }
+    
 }

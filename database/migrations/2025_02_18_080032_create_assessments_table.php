@@ -16,10 +16,6 @@ return new class extends Migration
     {
         Schema::create('assessments', function (Blueprint $table) {
             $table->id();
-            
-            $table->foreignIdFor(RoleUser::class)
-                ->constrained()
-                ->onDelete('cascade');
 
             $table->foreignIdFor(Work::class)
                 ->constrained()
