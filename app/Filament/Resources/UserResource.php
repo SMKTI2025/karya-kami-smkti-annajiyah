@@ -25,12 +25,19 @@ use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Infolists\Infolist;
 use Filament\Infolists\Components\Section as InfolistSection;
 use Filament\Infolists\Components\TextEntry;
+use App\Filament\Resources\UserResource\Widgets\UserStats;
 
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
     protected static ?string $navigationGroup = 'User Management';
     protected static ?string $navigationIcon = 'heroicon-o-user';
+
+    public static function getWidgets(): array {
+        return [
+            UserStats::class,
+        ];
+    }
 
     public static function form(Form $form): Form
     {
@@ -136,6 +143,7 @@ class UserResource extends Resource
                     TextEntry::make('name')->label('Full Name'),
                     TextEntry::make('email')->label('Email Address'),
                     TextEntry::make('roles.name')->label('role user'),
+                    TextEntry::make('email_verified_at')->label('user verified'),
                 ]),
             ]);
     }

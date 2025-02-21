@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Resources\UserResource;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -9,10 +10,14 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use App\Settings\KaryaSetting;
+use App\Filament\Pages\Login;
+use Illuminate\Support\Facades\Schema;
 use Filament\Widgets;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use App\Filament\Resources\AssessmentResource;
 use App\Filament\Resources\RoleResource;
+use App\Filament\Resources\WorkResource;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -21,23 +26,45 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
-class AdminPanelProvider extends PanelProvider
-{
-    public function panel(Panel $panel): Panel
-    {
+class AdminPanelProvider extends PanelProvider {
+
+    public function panel(Panel $panel): Panel {
+        // Cek apakah tabel settings sudah ada sebelum memanggil KaryaSetting
+        $settings = null;
+        try {
+            if (Schema::hasTable('settings')) {
+                $settings = app(KaryaSetting::class);
+            }
+        } catch (\Exception $e) {
+            $settings = null;
+        }
+    
         return $panel
             ->default()
             ->id('admin')
-            ->path('admin')
-            ->login()
+            ->path('admin') // Gunakan path yang jelas
+            ->when($this->settings->login_enabled ?? true, 
+                   fn($panel) => 
+                   $panel->login(Login::class)
+                  )
+            ->when($this->settings->registration_enabled ?? true, 
+                   fn($panel) => $panel->registration()
+                  )
+            ->when($this->settings->password_reset_enabled ?? true, 
+                   fn($panel) => $panel->passwordReset()
+                  )
+            ->emailVerification()
             ->colors([
                 'primary' => Color::Rose,
             ])
             ->resources([
+                UserResource::class,
+                WorkResource::class,
                 RoleResource::class,
                 AssessmentResource::class,
             ])
-            ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
+            // Coba nonaktifkan discoverResources dulu jika tidak yakin
+            // ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
                 Pages\Dashboard::class,
@@ -63,7 +90,6 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-                
             ]);
-    }
+    }    
 }

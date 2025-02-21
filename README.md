@@ -20,23 +20,28 @@
 ### **1. Clone Repository**  
 ```sh
 git clone https://github.com/username/repo.git
+
 cd repo
 ```
 
 ### **2. Buat File `.env`**  
 ```sh
+
 cp .env.example .env
+
 ```
 
 ### **3. Konfigurasi Database**  
 Buka file `.env` dan sesuaikan konfigurasi database:  
 ```env
+
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=karya-kami-db
 DB_USERNAME=root
 DB_PASSWORD=
+
 ```
 
 ### **4. Install Dependency**  
