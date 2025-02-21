@@ -3,18 +3,25 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Section;
+use Filament\Support\Enums\FontWeight;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Forms\Components\Select;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\Layout\Split;
+use Filament\Tables\Columns\Layout\Stack;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteBulkAction;
 
 class UserResource extends Resource
 {
@@ -26,23 +33,16 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')
-                    ->label('Name')
-                    ->required(),
-
-                TextInput::make('email')->label('Email')
-                    ->email()
-                    ->required(),
-
-                TextInput::make('password')
-                    ->label('Password')
-                    ->password()
-                    ->required(fn($record) => $record === null),
-
-                Select::make('roles')
-                    ->label('Roles')
-                    ->relationship('roles', 'name')
-                    ->preload(),
+                Section::make('User Information')
+                    ->schema([
+                        TextInput::make('name')
+                            ->required(),
+                        TextInput::make('email')
+                            ->required(),
+                        TextInput::make('password')
+                            ->password()
+                            ->required(),
+                    ]),
             ]);
     }
 
@@ -50,48 +50,61 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                // table
-                TextColumn::make('id')
-                    ->label('ID')
-                    ->sortable()
-                    ->searchable(),
-
-                TextColumn::make('name')
-                    ->label('Name')
-                    ->sortable()
-                    ->searchable(),
-
-                TextColumn::make('email')
-                    ->label('Email')
-                    ->sortable()
-                    ->searchable(),
-
-                TextColumn::make('roles.name')
-                    ->label('Roles')
-                    ->badge(),
-                
-                TextColumn::make('created_at')
-                    ->label('Created At')
-                    ->dateTime(),
+                Split::make([
+                    ImageColumn::make('avatar_url')
+                        ->circular()
+                        ->grow(false)
+                        ->getStateUsing(fn($record) => $record->avatar_url ?: "https://ui-avatars.com/api/?name=" . urlencode($record->name)),
+                    
+                    TextColumn::make('name')
+                        ->searchable()
+                        ->weight(FontWeight::Bold),
+                    
+                    Stack::make([
+                        TextColumn::make('roles.name')
+                            ->searchable()
+                            ->icon('heroicon-o-shield-check')
+                            ->grow(false),
+                        TextColumn::make('email')
+                            ->icon('heroicon-m-envelope')
+                            ->searchable()
+                            ->grow(false),
+                    ])->alignStart()->visibleFrom('lg')->space(1),
+                ]),
             ])
             ->filters([
-                //
+                SelectFilter::make('roles')
+                    ->relationship('roles', 'name')
+                    ->multiple()
+                    ->preload(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                ViewAction::make(),
+                EditAction::make(),
+                Action::make('Set Role')
+                    ->icon('heroicon-m-adjustments-vertical')
+                    ->form([
+                        Select::make('role')
+                            ->relationship('roles', 'name')
+                            ->multiple()
+                            ->required(),
+                    ])
+                    ->action(function (User $record, array $data) {
+                        $record->roles()->sync($data['role']);
+                    })
+                    ->successNotificationTitle('Roles updated successfully!'),
+                DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array
@@ -99,6 +112,7 @@ class UserResource extends Resource
         return [
             'index' => Pages\ListUsers::route('/'),
             'create' => Pages\CreateUser::route('/create'),
+            'view' => Pages\ViewUser::route('/{record}'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }

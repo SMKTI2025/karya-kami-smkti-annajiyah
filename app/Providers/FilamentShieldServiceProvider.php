@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Filament\Resources\RoleResource;
 use Filament\Facades\Filament;
 use Illuminate\Support\ServiceProvider;
+use App\Filament\Resources\RoleResource as CustomRoleResource;
 
 class FilamentShieldServiceProvider extends ServiceProvider
 {
@@ -14,7 +14,7 @@ class FilamentShieldServiceProvider extends ServiceProvider
     public function register(): void
     {
         Filament::registerResources([
-            RoleResource::class,
+            CustomRoleResource::class,
         ]);
     }
 
