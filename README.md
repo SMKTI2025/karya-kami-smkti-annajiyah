@@ -3,8 +3,15 @@
 **Karya Kami** adalah platform untuk menyimpan dan menampilkan proyek-proyek siswa SMKTI Annajiyah. Platform ini memungkinkan siswa untuk mempublikasikan proyek mereka yang di-host di internet, baik secara **publik** maupun melalui **GitHub**.  
 
 ### ✨ **Teknologi yang Digunakan**  
+
 - **Laravel 10** (Backend)  
-- **Filament 3.2** (Admin Dashboard)  
+- **Filament 3.2** (Admin Dashboard)
+- ⚡ Quick CRUD generation with customized [FilamentPHP](https://filamentphp.com/) stubs
+    - Optimized UX out of the box
+    - No need to modify generated resources
+- 🔄 Auto reload on save for rapid development
+- 📚 Easy API documentation
+- 📤 Built-in Export and Import examples in Filament resources
 
 ---
 
