@@ -22,6 +22,9 @@ use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Infolists\Infolist;
+use Filament\Infolists\Components\Section as InfolistSection;
+use Filament\Infolists\Components\TextEntry;
 
 class UserResource extends Resource
 {
@@ -37,11 +40,18 @@ class UserResource extends Resource
                     ->schema([
                         TextInput::make('name')
                             ->required(),
+
                         TextInput::make('email')
-                            ->required(),
+                            ->required()
+                            ->email(),
+
                         TextInput::make('password')
                             ->password()
-                            ->required(),
+                            ->minLength(6)
+                            ->maxLength(50)
+                            ->dehydrateStateUsing(fn($state) => !empty($state) ? bcrypt($state) : null)
+                            ->nullable()
+                            ->visible(fn($record) => !$record), // Hanya tampil saat create
                     ]),
             ]);
     }
@@ -65,6 +75,7 @@ class UserResource extends Resource
                             ->searchable()
                             ->icon('heroicon-o-shield-check')
                             ->grow(false),
+
                         TextColumn::make('email')
                             ->icon('heroicon-m-envelope')
                             ->searchable()
@@ -90,7 +101,7 @@ class UserResource extends Resource
                             ->required(),
                     ])
                     ->action(function (User $record, array $data) {
-                        $record->roles()->sync($data['role']);
+                        $record->roles()->sync($data['role'] ?? []);
                     })
                     ->successNotificationTitle('Roles updated successfully!'),
                 DeleteAction::make(),
@@ -115,5 +126,17 @@ class UserResource extends Resource
             'view' => Pages\ViewUser::route('/{record}'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                InfolistSection::make('User Information')->schema([
+                    TextEntry::make('name')->label('Full Name'),
+                    TextEntry::make('email')->label('Email Address'),
+                    TextEntry::make('roles.name')->label('role user'),
+                ]),
+            ]);
     }
 }
