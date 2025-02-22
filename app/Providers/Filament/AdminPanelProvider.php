@@ -14,6 +14,8 @@ use App\Settings\KaryaSetting;
 use App\Filament\Pages\Login;
 use Illuminate\Support\Facades\Schema;
 use Filament\Widgets;
+use Filament\Forms\Components\FileUpload;
+use Jeffgreco13\FilamentBreezy\BreezyCore;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use App\Filament\Resources\AssessmentResource;
 use App\Filament\Resources\RoleResource;
@@ -74,6 +76,7 @@ class AdminPanelProvider extends PanelProvider {
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
             ])
+            ->sidebarCollapsibleOnDesktop(true)
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
@@ -85,11 +88,32 @@ class AdminPanelProvider extends PanelProvider {
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
-            ->plugins([
-                FilamentShieldPlugin::make(),
-            ])
+            ->plugins($this->getPlugins())
             ->authMiddleware([
                 Authenticate::class,
             ]);
-    }    
+    }
+    private function getPlugins(): array {
+        $plugins = [
+            FilamentShieldPlugin::make(),
+            BreezyCore::make()
+                ->myProfile(
+                    shouldRegisterUserMenu: true, // Sets the 'account' link in the panel User Menu (default = true)
+                    shouldRegisterNavigation: true, // Adds a main navigation item for the My Profile page (default = false)
+                    navigationGroup: 'Settings', // Sets the navigation group for the My Profile page (default = null)
+                    hasAvatars: true, // Enables the avatar upload form component (default = false)
+                    slug: 'my-profile'
+                )
+                ->avatarUploadComponent(fn($fileUpload) => $fileUpload->disableLabel())
+                // OR, replace with your own component
+                ->avatarUploadComponent(
+                    fn() => FileUpload::make('avatar_url')
+                        ->image()
+                        ->disk('public')
+                )
+                ->enableTwoFactorAuthentication(),
+        ];
+
+        return $plugins;
+    }
 }

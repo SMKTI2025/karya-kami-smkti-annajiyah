@@ -13,6 +13,12 @@
 - 📚 Easy API documentation
 - 📤 Built-in Export and Import examples in Filament resources
 
+### 🔐 Authentication & Authorization
+- 🛡️ Role-Based Access Control (RBAC) using [Filament Shield](https://filamentphp.com/plugins/bezhansalleh-shield)
+- 🔑 Enhanced login page with custom design
+- 👤 User profile management with [Filament Breezy](https://filamentphp.com/plugins/jeffgreco-breezy)
+- 🔒 Instant 2-Factor Authentication capabilities
+- 👥 Simple user-to-role assignment
 
 ### ⚙️ Configuration & Settings
 
