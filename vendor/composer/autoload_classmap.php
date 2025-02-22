@@ -14,6 +14,7 @@ return array(
     'AnourValar\\EloquentSerialize\\Service' => $vendorDir . '/anourvalar/eloquent-serialize/src/Service.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Filament\\Pages\\Login' => $baseDir . '/app/Filament/Pages/Login.php',
     'App\\Filament\\Resources\\AssessmentResource' => $baseDir . '/app/Filament/Resources/AssessmentResource.php',
     'App\\Filament\\Resources\\AssessmentResource\\Pages\\CreateAssessment' => $baseDir . '/app/Filament/Resources/AssessmentResource/Pages/CreateAssessment.php',
     'App\\Filament\\Resources\\AssessmentResource\\Pages\\EditAssessment' => $baseDir . '/app/Filament/Resources/AssessmentResource/Pages/EditAssessment.php',

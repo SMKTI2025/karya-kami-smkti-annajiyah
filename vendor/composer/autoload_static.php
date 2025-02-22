@@ -746,6 +746,7 @@ class ComposerStaticInitbfe12996eeecb6fdc8713a9fd9d431f8
         'AnourValar\\EloquentSerialize\\Service' => __DIR__ . '/..' . '/anourvalar/eloquent-serialize/src/Service.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Filament\\Pages\\Login' => __DIR__ . '/../..' . '/app/Filament/Pages/Login.php',
         'App\\Filament\\Resources\\AssessmentResource' => __DIR__ . '/../..' . '/app/Filament/Resources/AssessmentResource.php',
         'App\\Filament\\Resources\\AssessmentResource\\Pages\\CreateAssessment' => __DIR__ . '/../..' . '/app/Filament/Resources/AssessmentResource/Pages/CreateAssessment.php',
         'App\\Filament\\Resources\\AssessmentResource\\Pages\\EditAssessment' => __DIR__ . '/../..' . '/app/Filament/Resources/AssessmentResource/Pages/EditAssessment.php',

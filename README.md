@@ -13,6 +13,13 @@
 - 📚 Easy API documentation
 - 📤 Built-in Export and Import examples in Filament resources
 
+
+### ⚙️ Configuration & Settings
+
+- 🎛️ Dynamic plugin management via [Filament Settings](https://filamentphp.com/plugins/filament-spatie-settings)
+    - Enable/disable features on the fly
+    - [Spatie Laravel Settings](https://github.com/spatie/laravel-settings) integration
+
 ---
 
 ## 🚀 **Instalasi & Konfigurasi**  
