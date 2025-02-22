@@ -4,7 +4,6 @@
     $isDisabled = $isDisabled();
     $isMultiple = $isMultiple();
     $statePath = $getStatePath();
-    $areButtonLabelsHidden = $areButtonLabelsHidden();
 @endphp
 
 <x-dynamic-component
@@ -21,13 +20,7 @@
         {{ $getLabel() }}
     </x-slot>
 
-    <x-filament::button.group
-        :attributes="
-            \Filament\Support\prepare_inherited_attributes($attributes)
-                ->merge($getExtraAttributes(), escape: false)
-                ->class(['w-max'])
-        "
-    >
+    <x-filament::button.group class="w-max">
         @foreach ($getOptions() as $value => $label)
             @php
                 $inputId = "{$id}-{$value}";
@@ -53,7 +46,6 @@
                 :for="$inputId"
                 grouped
                 :icon="$getIcon($value)"
-                :label-sr-only="$areButtonLabelsHidden"
                 tag="label"
             >
                 {{ $label }}

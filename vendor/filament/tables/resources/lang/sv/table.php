@@ -10,19 +10,8 @@ return [
 
     'columns' => [
 
-        'actions' => [
-            'label' => 'Åtgärd|Åtgärder',
-        ],
-
         'text' => [
-
-            'actions' => [
-                'collapse_list' => 'Visa :count färre',
-                'expand_list' => 'Visa :count till',
-            ],
-
             'more_list_items' => 'och :count till',
-
         ],
 
     ],
@@ -30,11 +19,11 @@ return [
     'fields' => [
 
         'bulk_select_page' => [
-            'label' => 'Markera/avmarkera alla objekt för massåtgärder.',
+            'label' => 'Markera/avmarkera alla rader för massåtgärder.',
         ],
 
         'bulk_select_record' => [
-            'label' => 'Markera/avmarkera objekt :key för massåtgärder.',
+            'label' => 'Markera/avmarkera rad :key för massåtgärder.',
         ],
 
         'bulk_select_group' => [
@@ -80,11 +69,11 @@ return [
     'actions' => [
 
         'disable_reordering' => [
-            'label' => 'Sluta ändra ordning på objekt',
+            'label' => 'Sluta ändra ordning på rader',
         ],
 
         'enable_reordering' => [
-            'label' => 'Ändra ordning på objekt',
+            'label' => 'Ändra ordning på rader',
         ],
 
         'filter' => [
@@ -117,10 +106,6 @@ return [
 
         'actions' => [
 
-            'apply' => [
-                'label' => 'Använd filter',
-            ],
-
             'remove' => [
                 'label' => 'Ta bort filter',
             ],
@@ -150,13 +135,13 @@ return [
 
         'trashed' => [
 
-            'label' => 'Raderade objekt',
+            'label' => 'Raderade rader',
 
-            'only_trashed' => 'Endast raderade objekt',
+            'only_trashed' => 'Endast raderade rader',
 
-            'with_trashed' => 'Med raderade objekt',
+            'with_trashed' => 'Med raderade rader',
 
-            'without_trashed' => 'Utan raderade objekt',
+            'without_trashed' => 'Utan raderade rader',
 
         ],
 
@@ -186,11 +171,11 @@ return [
 
     ],
 
-    'reorder_indicator' => 'Dra och släpp objekten i önskad ordning.',
+    'reorder_indicator' => 'Dra och släpp raderna i önskad ordning.',
 
     'selection_indicator' => [
 
-        'selected_count' => '1 objekt valt|:count objekt valda',
+        'selected_count' => '1 rad vald|:count rader valda',
 
         'actions' => [
 

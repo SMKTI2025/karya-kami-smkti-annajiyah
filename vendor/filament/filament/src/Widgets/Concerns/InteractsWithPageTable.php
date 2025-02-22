@@ -60,14 +60,6 @@ trait InteractsWithPageTable
         throw new Exception('You must define a `getTablePage()` method on your widget that returns the name of a Livewire component.');
     }
 
-    /**
-     * @return array<string, mixed>
-     */
-    protected function getTablePageMountParameters(): array
-    {
-        return [];
-    }
-
     protected function getTablePageInstance(): HasTable
     {
         if (isset($this->tablePage)) {
@@ -76,7 +68,7 @@ trait InteractsWithPageTable
 
         /** @var HasTable $tableComponent */
         $page = app('livewire')->new($this->getTablePage());
-        trigger('mount', $page, $this->getTablePageMountParameters(), null, null);
+        trigger('mount', $page, [], null, null);
 
         $page->activeTab = $this->activeTab;
         $page->paginators = $this->paginators;

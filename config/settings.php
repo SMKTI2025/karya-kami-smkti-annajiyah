@@ -7,7 +7,7 @@ return [
      * put them (manually) here.
      */
     'settings' => [
-        App\Settings\KaryaSetting::class,
+        'KaryaSetting' => App\Settings\KaryaSetting::class,
     ],
 
     /*

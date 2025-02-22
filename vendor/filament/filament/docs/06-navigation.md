@@ -1,7 +1,6 @@
 ---
 title: Navigation
 ---
-import AutoScreenshot from "@components/AutoScreenshot.astro"
 
 ## Overview
 
@@ -34,9 +33,7 @@ To customize a navigation item's [icon](https://blade-ui-kit.com/blade-icons?set
 protected static ?string $navigationIcon = 'heroicon-o-document-text';
 ```
 
-<AutoScreenshot name="panels/navigation/change-icon" alt="Changed navigation item icon" version="3.x" />
-
-If you set `$navigationIcon = null` on all items within the same navigation group, those items will be joined with a vertical bar below the group label.
+If you set `$navigationIcon = null` on all items within the same navigation group, those items will be joined with a vertical bar below the Group name.
 
 ### Switching navigation item icon when it is active
 
@@ -45,8 +42,6 @@ You may assign a navigation [icon](https://blade-ui-kit.com/blade-icons?set=1#se
 ```php
 protected static ?string $activeNavigationIcon = 'heroicon-o-document-text';
 ```
-
-<AutoScreenshot name="panels/navigation/active-icon" alt="Different navigation item icon when active" version="3.x" />
 
 ## Sorting navigation items
 
@@ -57,8 +52,6 @@ protected static ?int $navigationSort = 3;
 ```
 
 Now, navigation items with a lower sort value will appear before those with a higher sort value - the order is ascending.
-
-<AutoScreenshot name="panels/navigation/sort-items" alt="Sort navigation items" version="3.x" />
 
 ## Adding a badge to a navigation item
 
@@ -71,8 +64,6 @@ public static function getNavigationBadge(): ?string
 }
 ```
 
-<AutoScreenshot name="panels/navigation/badge" alt="Navigation item with badge" version="3.x" />
-
 If a badge value is returned by `getNavigationBadge()`, it will display using the primary color by default. To style the badge contextually, return either `danger`, `gray`, `info`, `primary`, `success` or `warning` from the `getNavigationBadgeColor()` method:
 
 ```php
@@ -82,25 +73,6 @@ public static function getNavigationBadgeColor(): ?string
 }
 ```
 
-<AutoScreenshot name="panels/navigation/badge-color" alt="Navigation item with badge color" version="3.x" />
-
-A custom tooltip for the navigation badge can be set in `$navigationBadgeTooltip`:
-
-```php
-protected static ?string $navigationBadgeTooltip = 'The number of users';
-```
-
-Or it can be returned from `getNavigationBadgeTooltip()`:
-
-```php
-public static function getNavigationBadgeTooltip(): ?string
-{
-    return 'The number of users';
-}
-```
-
-<AutoScreenshot name="panels/navigation/badge-tooltip" alt="Navigation item with badge tooltip" version="3.x" />
-
 ## Grouping navigation items
 
 You may group navigation items by specifying a `$navigationGroup` property on a [resource](resources/getting-started) and [custom page](pages):
@@ -108,8 +80,6 @@ You may group navigation items by specifying a `$navigationGroup` property on a 
 ```php
 protected static ?string $navigationGroup = 'Settings';
 ```
-
-<AutoScreenshot name="panels/navigation/group" alt="Grouped navigation items" version="3.x" />
 
 All items in the same navigation group will be displayed together under the same group label, "Settings" in this case. Ungrouped items will remain at the start of the navigation.
 
@@ -178,13 +148,9 @@ $panel
     ])
 ```
 
-#### Making navigation groups not collapsible
+### Making navigation groups not collapsible
 
-By default, navigation groups are collapsible.
-
-<AutoScreenshot name="panels/navigation/group-collapsible" alt="Collapsible navigation groups" version="3.x" />
-
-You may disable this behavior by calling `collapsible(false)` on the `NavigationGroup` object:
+By default, navigation groups are collapsible. You may disable this behavior by calling `collapsible(false)` on the `NavigationGroup` object:
 
 ```php
 use Filament\Navigation\NavigationGroup;
@@ -194,8 +160,6 @@ NavigationGroup::make()
     ->icon('heroicon-o-cog-6-tooth')
     ->collapsible(false);
 ```
-
-<AutoScreenshot name="panels/navigation/group-not-collapsible" alt="Not collapsible navigation groups" version="3.x" />
 
 Or, you can do it globally for all groups in the [configuration](configuration):
 
@@ -209,18 +173,6 @@ public function panel(Panel $panel): Panel
         ->collapsibleNavigationGroups(false);
 }
 ```
-
-#### Adding extra HTML attributes to navigation groups
-
-You can pass extra HTML attributes to the navigation group, which will be merged onto the outer DOM element. Pass an array of attributes to the `extraSidebarAttributes()` or `extraTopbarAttributes()` method, where the key is the attribute name and the value is the attribute value:
-
-```php
-NavigationGroup::make()
-    ->extraSidebarAttributes(['class' => 'featured-sidebar-group']),
-    ->extraTopbarAttributes(['class' => 'featured-topbar-group']),
-```
-
-The `extraSidebarAttributes()` will be applied to navigation group elements contained in the sidebar, and the `extraTopbarAttributes()` will only be applied to topbar navigation group dropdowns when using [top navigation](#using-top-navigation).
 
 ## Collapsible sidebar on desktop
 
@@ -237,8 +189,6 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<AutoScreenshot name="panels/navigation/sidebar-collapsible-on-desktop" alt="Collapsible sidebar on desktop" version="3.x" />
-
 By default, when you collapse the sidebar on desktop, the navigation icons still show. You can fully collapse the sidebar using the `sidebarFullyCollapsibleOnDesktop()` method:
 
 ```php
@@ -251,18 +201,6 @@ public function panel(Panel $panel): Panel
         ->sidebarFullyCollapsibleOnDesktop();
 }
 ```
-
-<AutoScreenshot name="panels/navigation/sidebar-fully-collapsible-on-desktop" alt="Fully collapsible sidebar on desktop" version="3.x" />
-
-### Navigation groups in a collapsible sidebar on desktop
-
-> This section only applies to `sidebarCollapsibleOnDesktop()`, not `sidebarFullyCollapsibleOnDesktop()`, since the fully collapsible UI just hides the entire sidebar instead of changing its design.
-
-When using a collapsible sidebar on desktop, you will also often be using [navigation groups](#grouping-navigation-items). By default, the labels of each navigation group will be hidden when the sidebar is collapsed, since there is no space to display them. Even if the navigation group itself is [collapsible](#making-navigation-groups-not-collapsible), all items will still be visible in the collapsed sidebar, since there is no group label to click on to expand the group.
-
-These issues can be solved, to achieve a very minimal sidebar design, by [passing an `icon()`](#customizing-navigation-groups) to the navigation group objects. When an icon is defined, the icon will be displayed in the collapsed sidebar instead of the items at all times. When the icon is clicked, a dropdown will open to the side of the icon, revealing the items in the group.
-
-When passing an icon to a navigation group, even if the items also have icons, the expanded sidebar UI will not show the item icons. This is to keep the navigation hierarchy clear, and the design minimal. However, the icons for the items will be shown in the collapsed sidebar's dropdowns though, since the hierarchy is already clear from the fact that the dropdown is open.
 
 ## Registering custom navigation items
 
@@ -339,37 +277,6 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<AutoScreenshot name="panels/navigation/top-navigation" alt="Top navigation" version="3.x" />
-
-## Customizing the width of the sidebar
-
-You can customize the width of the sidebar by passing it to the `sidebarWidth()` method in the [configuration](configuration):
-
-```php
-use Filament\Panel;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-        // ...
-        ->sidebarWidth('40rem');
-}
-```
-
-Additionally, if you are using the `sidebarCollapsibleOnDesktop()` method, you can customize width of the collapsed icons by using the `collapsedSidebarWidth()` method in the [configuration](configuration):
-
-```php
-use Filament\Panel;
-
-public function panel(Panel $panel): Panel
-{
-    return $panel
-        // ...
-        ->sidebarCollapsibleOnDesktop()
-        ->collapsedSidebarWidth('9rem');
-}
-```
-
 ## Advanced navigation customization
 
 The `navigation()` method can be called from the [configuration](configuration). It allows you to build a custom navigation that overrides Filament's automatically generated items. This API is designed to give you complete control over the navigation.
@@ -402,8 +309,6 @@ public function panel(Panel $panel): Panel
         });
 }
 ```
-
-<AutoScreenshot name="panels/navigation/custom-items" alt="Custom navigation items" version="3.x" />
 
 ### Registering custom navigation groups
 
@@ -449,8 +354,6 @@ public function panel(Panel $panel): Panel
 }
 ```
 
-<AutoScreenshot name="panels/navigation/disabled-navigation" alt="Disabled navigation sidebar" version="3.x" />
-
 ### Disabling the topbar
 
 You may disable topbar entirely by passing `false` to the `topbar()` method:
@@ -490,8 +393,6 @@ public function panel(Panel $panel): Panel
         ]);
 }
 ```
-
-<AutoScreenshot name="panels/navigation/user-menu" alt="User menu with custom menu item" version="3.x" />
 
 ### Customizing the profile link
 
@@ -546,18 +447,6 @@ MenuItem::make()
     ->visible(fn (): bool => auth()->user()->can('viewAny', Payment::class))
     // or
     ->hidden(fn (): bool => ! auth()->user()->can('viewAny', Payment::class))
-```
-
-### Sending a `POST` HTTP request from a user menu item
-
-You can send a `POST` HTTP request from a user menu item by passing a URL to the `postAction()` method:
-
-```php
-use Filament\Navigation\MenuItem;
-
-MenuItem::make()
-    ->label('Lock session')
-    ->postAction(fn (): string => route('lock-session'))
 ```
 
 ## Disabling breadcrumbs

@@ -37,23 +37,23 @@
         >
             <div
                 @if (FilamentView::hasSpaMode())
-                    x-load="visible"
+                    ax-load="visible"
                 @else
-                    x-load
+                    ax-load
                 @endif
-                x-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('chart', 'filament/widgets') }}"
+                ax-load-src="{{ \Filament\Support\Facades\FilamentAsset::getAlpineComponentSrc('chart', 'filament/widgets') }}"
                 wire:ignore
                 x-data="chart({
                             cachedData: @js($this->getCachedData()),
                             options: @js($this->getOptions()),
                             type: @js($this->getType()),
                         })"
+                x-ignore
                 @class([
                     match ($color) {
-                        'gray' => null,
+                        'gray' => 'fi-color-gray',
                         default => 'fi-color-custom',
                     },
-                    is_string($color) ? "fi-color-{$color}" : null,
                 ])
             >
                 <canvas

@@ -11,67 +11,15 @@ return [
             ],
 
             'add' => [
-
                 'label' => 'Lägg till i :label',
-
-                'modal' => [
-
-                    'heading' => 'Lägg till i :label',
-
-                    'actions' => [
-
-                        'add' => [
-                            'label' => 'Lägg till',
-                        ],
-
-                    ],
-
-                ],
-
             ],
 
             'add_between' => [
-
                 'label' => 'Infoga mellan block',
-
-                'modal' => [
-
-                    'heading' => 'Lägg till i :label',
-
-                    'actions' => [
-
-                        'add' => [
-                            'label' => 'Lägg till',
-                        ],
-
-                    ],
-
-                ],
-
             ],
 
             'delete' => [
                 'label' => 'Radera',
-            ],
-
-            'edit' => [
-
-                'label' => 'Redigera',
-
-                'modal' => [
-
-                    'heading' => 'Redigera block',
-
-                    'actions' => [
-
-                        'save' => [
-                            'label' => 'Spara ändringar',
-                        ],
-
-                    ],
-
-                ],
-
             ],
 
             'reorder' => [
@@ -302,15 +250,6 @@ return [
 
     ],
 
-    'radio' => [
-
-        'boolean' => [
-            'true' => 'Ja',
-            'false' => 'Nej',
-        ],
-
-    ],
-
     'repeater' => [
 
         'actions' => [
@@ -408,8 +347,6 @@ return [
 
             'create_option' => [
 
-                'label' => 'Skapa',
-
                 'modal' => [
 
                     'heading' => 'Skapa',
@@ -431,8 +368,6 @@ return [
             ],
 
             'edit_option' => [
-
-                'label' => 'Redigera',
 
                 'modal' => [
 
@@ -473,31 +408,6 @@ return [
 
     'tags_input' => [
         'placeholder' => 'Ny tagg',
-    ],
-
-    'text_input' => [
-
-        'actions' => [
-
-            'hide_password' => [
-                'label' => 'Dölj lösenord',
-            ],
-
-            'show_password' => [
-                'label' => 'Visa lösenord',
-            ],
-
-        ],
-
-    ],
-
-    'toggle_buttons' => [
-
-        'boolean' => [
-            'true' => 'Ja',
-            'false' => 'Nej',
-        ],
-
     ],
 
     'wizard' => [

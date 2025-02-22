@@ -23,7 +23,7 @@
     @endif
 
     {{-- Hook Sebelum Form --}}
-    {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::AUTH_LOGIN_FORM_BEFORE, scopes: $this->getRenderHookScopes()) }}
+    {{ \Filament\Support\Facades\FilamentView::renderHook('filament.auth.login.before') }}
 
     {{-- Form Login --}}
     <x-filament-panels::form id="form" wire:submit="authenticate">
@@ -37,5 +37,5 @@
     </x-filament-panels::form>
 
     {{-- Hook Setelah Form --}}
-    {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::AUTH_LOGIN_FORM_AFTER, scopes: $this->getRenderHookScopes()) }}
+    {{ \Filament\Support\Facades\FilamentView::renderHook('filament.auth.login.after') }}
 </x-filament-panels::page.simple>

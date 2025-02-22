@@ -11,67 +11,15 @@ return [
             ],
 
             'add' => [
-
                 'label' => 'Adicionar em :label',
-
-                'modal' => [
-
-                    'heading' => 'Adicionar em :label',
-
-                    'actions' => [
-
-                        'add' => [
-                            'label' => 'Adicionar',
-                        ],
-
-                    ],
-
-                ],
-
             ],
 
             'add_between' => [
-
-                'label' => 'Inserir entre blocos',
-
-                'modal' => [
-
-                    'heading' => 'Adicionar em :label',
-
-                    'actions' => [
-
-                        'add' => [
-                            'label' => 'Adicionar',
-                        ],
-
-                    ],
-
-                ],
-
+                'label' => 'Inserir',
             ],
 
             'delete' => [
                 'label' => 'Excluir',
-            ],
-
-            'edit' => [
-
-                'label' => 'Editar',
-
-                'modal' => [
-
-                    'heading' => 'Editar bloco',
-
-                    'actions' => [
-
-                        'save' => [
-                            'label' => 'Salvar alterações',
-                        ],
-
-                    ],
-
-                ],
-
             ],
 
             'reorder' => [
@@ -408,8 +356,6 @@ return [
 
             'create_option' => [
 
-                'label' => 'Criar',
-
                 'modal' => [
 
                     'heading' => 'Criar',
@@ -431,8 +377,6 @@ return [
             ],
 
             'edit_option' => [
-
-                'label' => 'Editar',
 
                 'modal' => [
 
@@ -473,31 +417,6 @@ return [
 
     'tags_input' => [
         'placeholder' => 'Nova tag',
-    ],
-
-    'text_input' => [
-
-        'actions' => [
-
-            'hide_password' => [
-                'label' => 'Esconder senha',
-            ],
-
-            'show_password' => [
-                'label' => 'Mostrar senha',
-            ],
-
-        ],
-
-    ],
-
-    'toggle_buttons' => [
-
-        'boolean' => [
-            'true' => 'Sim',
-            'false' => 'Não',
-        ],
-
     ],
 
     'wizard' => [
