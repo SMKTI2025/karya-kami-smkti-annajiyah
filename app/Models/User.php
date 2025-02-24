@@ -16,7 +16,8 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements FilamentUser, HasAvatar, MustVerifyEmail {
 
-    use HasApiTokens, HasFactory, Notifiable, TwoFactorAuthenticatable, HasRoles;
+    use HasApiTokens, 
+    HasFactory, Notifiable, TwoFactorAuthenticatable, HasRoles;
 
     protected $table = "users";
     /**

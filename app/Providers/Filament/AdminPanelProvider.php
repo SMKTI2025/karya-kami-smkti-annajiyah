@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Schema;
 use Filament\Widgets;
 use Filament\Forms\Components\FileUpload;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
+use Rupadana\ApiService\ApiServicePlugin;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
 use App\Filament\Resources\AssessmentResource;
 use App\Filament\Resources\RoleResource;
@@ -96,6 +97,7 @@ class AdminPanelProvider extends PanelProvider {
     private function getPlugins(): array {
         $plugins = [
             FilamentShieldPlugin::make(),
+            ApiServicePlugin::make(),
             BreezyCore::make()
                 ->myProfile(
                     shouldRegisterUserMenu: true, // Sets the 'account' link in the panel User Menu (default = true)

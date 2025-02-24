@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'd1191d816da991dd0a4796e914bf9e4b47776db4',
+        'reference' => '0d102c56192cbd81b026da02397c1534225c3fbe',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(
@@ -113,6 +113,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'dedoc/scramble' => array(
+            'pretty_version' => 'v0.11.33',
+            'version' => '0.11.33.0',
+            'reference' => '3c44e2ec517045590cb36b165967283fd5798edc',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../dedoc/scramble',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'dflydev/dot-access-data' => array(
             'pretty_version' => 'v3.0.3',
@@ -591,7 +600,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'd1191d816da991dd0a4796e914bf9e4b47776db4',
+            'reference' => '0d102c56192cbd81b026da02397c1534225c3fbe',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(
@@ -774,7 +783,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../myclabs/deep-copy',
             'aliases' => array(),
-            'dev_requirement' => true,
+            'dev_requirement' => false,
         ),
         'nesbot/carbon' => array(
             'pretty_version' => '2.73.0',
@@ -1137,6 +1146,15 @@
                 0 => '4.7.6',
             ),
         ),
+        'rupadana/filament-api-service' => array(
+            'pretty_version' => '3.4.2',
+            'version' => '3.4.2.0',
+            'reference' => '815ffbae95d45a9c14291db26bcd59b174b02d9a',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rupadana/filament-api-service',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'ryangjchandler/blade-capture-directive' => array(
             'pretty_version' => 'v0.3.0',
             'version' => '0.3.0.0',
@@ -1359,6 +1377,15 @@
             'reference' => '86074fcfd127f9fa7bcdf550b7c938e3beb0d65f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../spatie/laravel-permission',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'spatie/laravel-query-builder' => array(
+            'pretty_version' => '6.3.1',
+            'version' => '6.3.1.0',
+            'reference' => '465d9b7364590c9ae3ee3738ff8a293e685dd588',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../spatie/laravel-query-builder',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
