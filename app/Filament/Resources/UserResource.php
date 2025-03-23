@@ -26,6 +26,7 @@ use Filament\Infolists\Infolist;
 use Filament\Infolists\Components\Section as InfolistSection;
 use Filament\Infolists\Components\TextEntry;
 use App\Filament\Resources\UserResource\Widgets\UserStats;
+use Carbon\Carbon;
 
 class UserResource extends Resource
 {
@@ -44,6 +45,7 @@ class UserResource extends Resource
         return $form
             ->schema([
                 Section::make('User Information')
+                ->description('Manage user details and authentication settings.')
                     ->schema([
                         TextInput::make('name')
                             ->required(),
@@ -94,11 +96,12 @@ class UserResource extends Resource
                 SelectFilter::make('roles')
                     ->relationship('roles', 'name')
                     ->multiple()
-                    ->preload(),
+                    ->preload()
+                    ->placeholder('Select role...'),
             ])
             ->actions([
-                ViewAction::make(),
-                EditAction::make(),
+                ViewAction::make()->icon('heroicon-o-eye'),
+                EditAction::make()->icon('heroicon-o-pencil'),
                 Action::make('Set Role')
                     ->icon('heroicon-m-adjustments-vertical')
                     ->form([
@@ -111,7 +114,7 @@ class UserResource extends Resource
                         $record->roles()->sync($data['role'] ?? []);
                     })
                     ->successNotificationTitle('Roles updated successfully!'),
-                DeleteAction::make(),
+                DeleteAction::make()->icon('heroicon-o-trash'),
             ])
             ->bulkActions([
                 BulkActionGroup::make([
@@ -140,10 +143,27 @@ class UserResource extends Resource
         return $infolist
             ->schema([
                 InfolistSection::make('User Information')->schema([
-                    TextEntry::make('name')->label('Full Name'),
-                    TextEntry::make('email')->label('Email Address'),
-                    TextEntry::make('roles.name')->label('role user'),
-                    TextEntry::make('email_verified_at')->label('user verified'),
+                    TextEntry::make('name')
+                        ->label('Full Name')
+                        ->icon('heroicon-o-user'),
+                    TextEntry::make('email')
+                        ->label('Email Address')
+                        ->icon('heroicon-o-envelope'),
+
+                    TextEntry::make('roles.name')
+                        ->label('role user')
+                        ->icon('heroicon-o-shield-check'),
+
+                    TextEntry::make('email_verified_at')
+                        ->label('Verified At')
+                        ->state(fn($record) => $record->email_verified_at 
+                            ? Carbon::parse($record->email_verified_at)->format('d M Y, H:i') 
+                            : '❌ Not Verified'
+                        )
+                        ->icon(fn($record) => $record->email_verified_at 
+                            ? 'heroicon-o-check-circle' 
+                            : ''
+                        ),
                 ]),
             ]);
     }

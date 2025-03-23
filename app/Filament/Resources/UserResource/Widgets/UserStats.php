@@ -8,38 +8,39 @@ use Carbon\Carbon;
 
 class UserStats extends ChartWidget
 {
-    // Heading untuk widget
-    protected static ?string $heading = 'User Statistics';
-
-    // Jenis chart (bisa diubah ke 'bar', 'pie', dll.)
+    protected static ?string $heading = '📊 User Growth Statistics';
     protected static ?string $type = 'line';
 
     protected function getData(): array
     {
-        // Mengambil data jumlah pengguna per bulan dalam setahun terakhir
         $usersPerMonth = User::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
             ->whereYear('created_at', Carbon::now()->year)
             ->groupBy('month')
             ->orderBy('month')
             ->get();
 
-        // Memetakan data ke format yang sesuai
         $data = [];
         $labels = [];
 
         foreach (range(1, 12) as $month) {
             $labels[] = Carbon::create()->month($month)->format('F'); // Nama bulan
-            $data[] = $usersPerMonth->firstWhere('month', $month)->count ?? 0; // Jumlah pengguna
+            $data[] = $usersPerMonth->firstWhere('month', $month)->count ?? 0;
         }
 
         return [
             'datasets' => [
                 [
-                    'label' => 'New Users',
+                    'label' => '📈 New Users per Month',
                     'data' => $data,
-                    'backgroundColor' => 'rgba(75, 192, 192, 0.2)', // Warna chart
-                    'borderColor' => 'rgba(75, 192, 192, 1)',
-                    'borderWidth' => 2,
+                    'backgroundColor' => 'rgba(75, 192, 192, 0.2)', // Warna dengan transparansi
+                    'borderColor' => 'rgba(75, 192, 192, 1)', // Warna utama garis
+                    'borderWidth' => 3,
+                    'pointBackgroundColor' => 'rgba(255, 99, 132, 1)', // Warna titik data
+                    'pointBorderColor' => '#fff',
+                    'pointBorderWidth' => 2,
+                    'pointRadius' => 5,
+                    'fill' => true, // Mengisi area di bawah garis
+                    'tension' => 0.4, // Efek smoothing garis
                 ],
             ],
             'labels' => $labels,
@@ -48,7 +49,6 @@ class UserStats extends ChartWidget
 
     protected function getType(): string
     {
-        // Tetapkan jenis chart (sesuai properti statis $type)
         return static::$type;
     }
 }
