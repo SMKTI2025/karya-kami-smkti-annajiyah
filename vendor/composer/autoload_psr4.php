@@ -135,6 +135,7 @@ return array(
     'BladeUI\\Heroicons\\' => array($vendorDir . '/blade-ui-kit/blade-heroicons/src'),
     'BezhanSalleh\\FilamentShield\\Database\\Factories\\' => array($vendorDir . '/bezhansalleh/filament-shield/database/factories'),
     'BezhanSalleh\\FilamentShield\\' => array($vendorDir . '/bezhansalleh/filament-shield/src'),
+    'BeyondCode\\ErdGenerator\\' => array($vendorDir . '/beyondcode/laravel-er-diagram-generator/src'),
     'BaconQrCode\\' => array($vendorDir . '/bacon/bacon-qr-code/src'),
     'App\\' => array($baseDir . '/app', $vendorDir . '/laravel/pint/app'),
     'AnourValar\\EloquentSerialize\\' => array($vendorDir . '/anourvalar/eloquent-serialize/src'),

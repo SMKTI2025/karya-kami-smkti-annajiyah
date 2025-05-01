@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '0d102c56192cbd81b026da02397c1534225c3fbe',
+        'reference' => '40fb11941806f6e3b9062b8a06f771d719263a38',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(
@@ -29,6 +29,15 @@
             'install_path' => __DIR__ . '/../bacon/bacon-qr-code',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'beyondcode/laravel-er-diagram-generator' => array(
+            'pretty_version' => '4.0.0',
+            'version' => '4.0.0.0',
+            'reference' => '07254be884d7d022559a7c88a10b41b9edd1e4ed',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../beyondcode/laravel-er-diagram-generator',
+            'aliases' => array(),
+            'dev_requirement' => true,
         ),
         'bezhansalleh/filament-shield' => array(
             'pretty_version' => '3.3.5',
@@ -600,7 +609,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '0d102c56192cbd81b026da02397c1534225c3fbe',
+            'reference' => '40fb11941806f6e3b9062b8a06f771d719263a38',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(
@@ -872,6 +881,15 @@
             'reference' => '4f7fd7836c6f332bb2933569e566a0d6c4cbed74',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phar-io/version',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'phpdocumentor/graphviz' => array(
+            'pretty_version' => '1.0.4',
+            'version' => '1.0.4.0',
+            'reference' => 'a906a90a9f230535f25ea31caf81b2323956283f',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpdocumentor/graphviz',
             'aliases' => array(),
             'dev_requirement' => true,
         ),

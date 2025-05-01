@@ -240,6 +240,7 @@ class ComposerStaticInitbfe12996eeecb6fdc8713a9fd9d431f8
             'BladeUI\\Heroicons\\' => 18,
             'BezhanSalleh\\FilamentShield\\Database\\Factories\\' => 47,
             'BezhanSalleh\\FilamentShield\\' => 28,
+            'BeyondCode\\ErdGenerator\\' => 24,
             'BaconQrCode\\' => 12,
         ),
         'A' => 
@@ -776,6 +777,10 @@ class ComposerStaticInitbfe12996eeecb6fdc8713a9fd9d431f8
         array (
             0 => __DIR__ . '/..' . '/bezhansalleh/filament-shield/src',
         ),
+        'BeyondCode\\ErdGenerator\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/beyondcode/laravel-er-diagram-generator/src',
+        ),
         'BaconQrCode\\' => 
         array (
             0 => __DIR__ . '/..' . '/bacon/bacon-qr-code/src',
@@ -788,6 +793,17 @@ class ComposerStaticInitbfe12996eeecb6fdc8713a9fd9d431f8
         'AnourValar\\EloquentSerialize\\' => 
         array (
             0 => __DIR__ . '/..' . '/anourvalar/eloquent-serialize/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'p' => 
+        array (
+            'phpDocumentor' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpdocumentor/graphviz/src',
+                1 => __DIR__ . '/..' . '/phpdocumentor/graphviz/tests/unit',
+            ),
         ),
     );
 
@@ -816,8 +832,18 @@ class ComposerStaticInitbfe12996eeecb6fdc8713a9fd9d431f8
         'App\\Filament\\Resources\\UserResource\\Pages\\EditUser' => __DIR__ . '/../..' . '/app/Filament/Resources/UserResource/Pages/EditUser.php',
         'App\\Filament\\Resources\\UserResource\\Pages\\ListUsers' => __DIR__ . '/../..' . '/app/Filament/Resources/UserResource/Pages/ListUsers.php',
         'App\\Filament\\Resources\\UserResource\\Pages\\ViewUser' => __DIR__ . '/../..' . '/app/Filament/Resources/UserResource/Pages/ViewUser.php',
+        'App\\Filament\\Resources\\UserResource\\Widgets\\TestWidget' => __DIR__ . '/../..' . '/app/Filament/Resources/UserResource/Widgets/TestWidget.php',
         'App\\Filament\\Resources\\UserResource\\Widgets\\UserStats' => __DIR__ . '/../..' . '/app/Filament/Resources/UserResource/Widgets/UserStats.php',
         'App\\Filament\\Resources\\WorkResource' => __DIR__ . '/../..' . '/app/Filament/Resources/WorkResource.php',
+        'App\\Filament\\Resources\\WorkResource\\Api\\Handlers\\CreateHandler' => __DIR__ . '/../..' . '/app/Filament/Resources/WorkResource/Api/Handlers/CreateHandler.php',
+        'App\\Filament\\Resources\\WorkResource\\Api\\Handlers\\DeleteHandler' => __DIR__ . '/../..' . '/app/Filament/Resources/WorkResource/Api/Handlers/DeleteHandler.php',
+        'App\\Filament\\Resources\\WorkResource\\Api\\Handlers\\DetailHandler' => __DIR__ . '/../..' . '/app/Filament/Resources/WorkResource/Api/Handlers/DetailHandler.php',
+        'App\\Filament\\Resources\\WorkResource\\Api\\Handlers\\PaginationHandler' => __DIR__ . '/../..' . '/app/Filament/Resources/WorkResource/Api/Handlers/PaginationHandler.php',
+        'App\\Filament\\Resources\\WorkResource\\Api\\Handlers\\UpdateHandler' => __DIR__ . '/../..' . '/app/Filament/Resources/WorkResource/Api/Handlers/UpdateHandler.php',
+        'App\\Filament\\Resources\\WorkResource\\Api\\Requests\\CreateWorkRequest' => __DIR__ . '/../..' . '/app/Filament/Resources/WorkResource/Api/Requests/CreateWorkRequest.php',
+        'App\\Filament\\Resources\\WorkResource\\Api\\Requests\\UpdateWorkRequest' => __DIR__ . '/../..' . '/app/Filament/Resources/WorkResource/Api/Requests/UpdateWorkRequest.php',
+        'App\\Filament\\Resources\\WorkResource\\Api\\Transformers\\WorkTransformer' => __DIR__ . '/../..' . '/app/Filament/Resources/WorkResource/Api/Transformers/WorkTransformer.php',
+        'App\\Filament\\Resources\\WorkResource\\Api\\WorkApiService' => __DIR__ . '/../..' . '/app/Filament/Resources/WorkResource/Api/WorkApiService.php',
         'App\\Filament\\Resources\\WorkResource\\Pages\\CreateWork' => __DIR__ . '/../..' . '/app/Filament/Resources/WorkResource/Pages/CreateWork.php',
         'App\\Filament\\Resources\\WorkResource\\Pages\\EditWork' => __DIR__ . '/../..' . '/app/Filament/Resources/WorkResource/Pages/EditWork.php',
         'App\\Filament\\Resources\\WorkResource\\Pages\\ListWorks' => __DIR__ . '/../..' . '/app/Filament/Resources/WorkResource/Pages/ListWorks.php',
@@ -837,6 +863,7 @@ class ComposerStaticInitbfe12996eeecb6fdc8713a9fd9d431f8
         'App\\Models\\Work' => __DIR__ . '/../..' . '/app/Models/Work.php',
         'App\\Policies\\AssessmentPolicy' => __DIR__ . '/../..' . '/app/Policies/AssessmentPolicy.php',
         'App\\Policies\\RolePolicy' => __DIR__ . '/../..' . '/app/Policies/RolePolicy.php',
+        'App\\Policies\\TokenPolicy' => __DIR__ . '/../..' . '/app/Policies/TokenPolicy.php',
         'App\\Policies\\UserPolicy' => __DIR__ . '/../..' . '/app/Policies/UserPolicy.php',
         'App\\Policies\\WorkPolicy' => __DIR__ . '/../..' . '/app/Policies/WorkPolicy.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
@@ -910,6 +937,14 @@ class ComposerStaticInitbfe12996eeecb6fdc8713a9fd9d431f8
         'BaconQrCode\\Renderer\\RendererStyle\\GradientType' => __DIR__ . '/..' . '/bacon/bacon-qr-code/src/Renderer/RendererStyle/GradientType.php',
         'BaconQrCode\\Renderer\\RendererStyle\\RendererStyle' => __DIR__ . '/..' . '/bacon/bacon-qr-code/src/Renderer/RendererStyle/RendererStyle.php',
         'BaconQrCode\\Writer' => __DIR__ . '/..' . '/bacon/bacon-qr-code/src/Writer.php',
+        'BeyondCode\\ErdGenerator\\Edge' => __DIR__ . '/..' . '/beyondcode/laravel-er-diagram-generator/src/Edge.php',
+        'BeyondCode\\ErdGenerator\\ErdGeneratorServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-er-diagram-generator/src/ErdGeneratorServiceProvider.php',
+        'BeyondCode\\ErdGenerator\\GenerateDiagramCommand' => __DIR__ . '/..' . '/beyondcode/laravel-er-diagram-generator/src/GenerateDiagramCommand.php',
+        'BeyondCode\\ErdGenerator\\GraphBuilder' => __DIR__ . '/..' . '/beyondcode/laravel-er-diagram-generator/src/GraphBuilder.php',
+        'BeyondCode\\ErdGenerator\\Model' => __DIR__ . '/..' . '/beyondcode/laravel-er-diagram-generator/src/Model.php',
+        'BeyondCode\\ErdGenerator\\ModelFinder' => __DIR__ . '/..' . '/beyondcode/laravel-er-diagram-generator/src/ModelFinder.php',
+        'BeyondCode\\ErdGenerator\\ModelRelation' => __DIR__ . '/..' . '/beyondcode/laravel-er-diagram-generator/src/ModelRelation.php',
+        'BeyondCode\\ErdGenerator\\RelationFinder' => __DIR__ . '/..' . '/beyondcode/laravel-er-diagram-generator/src/RelationFinder.php',
         'BezhanSalleh\\FilamentShield\\Commands\\Concerns\\CanBeProhibitable' => __DIR__ . '/..' . '/bezhansalleh/filament-shield/src/Commands/Concerns/CanBeProhibitable.php',
         'BezhanSalleh\\FilamentShield\\Commands\\Concerns\\CanGeneratePolicy' => __DIR__ . '/..' . '/bezhansalleh/filament-shield/src/Commands/Concerns/CanGeneratePolicy.php',
         'BezhanSalleh\\FilamentShield\\Commands\\Concerns\\CanGenerateRelationshipsForTenancy' => __DIR__ . '/..' . '/bezhansalleh/filament-shield/src/Commands/Concerns/CanGenerateRelationshipsForTenancy.php',
@@ -9321,6 +9356,11 @@ class ComposerStaticInitbfe12996eeecb6fdc8713a9fd9d431f8
         'Whoops\\Util\\Misc' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/Misc.php',
         'Whoops\\Util\\SystemFacade' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/SystemFacade.php',
         'Whoops\\Util\\TemplateHelper' => __DIR__ . '/..' . '/filp/whoops/src/Whoops/Util/TemplateHelper.php',
+        'phpDocumentor\\GraphViz\\Attribute' => __DIR__ . '/..' . '/phpdocumentor/graphviz/src/phpDocumentor/GraphViz/Attribute.php',
+        'phpDocumentor\\GraphViz\\Edge' => __DIR__ . '/..' . '/phpdocumentor/graphviz/src/phpDocumentor/GraphViz/Edge.php',
+        'phpDocumentor\\GraphViz\\Exception' => __DIR__ . '/..' . '/phpdocumentor/graphviz/src/phpDocumentor/GraphViz/Exception.php',
+        'phpDocumentor\\GraphViz\\Graph' => __DIR__ . '/..' . '/phpdocumentor/graphviz/src/phpDocumentor/GraphViz/Graph.php',
+        'phpDocumentor\\GraphViz\\Node' => __DIR__ . '/..' . '/phpdocumentor/graphviz/src/phpDocumentor/GraphViz/Node.php',
         'phpDocumentor\\Reflection\\Element' => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src/Element.php',
         'phpDocumentor\\Reflection\\File' => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src/File.php',
         'phpDocumentor\\Reflection\\Fqsen' => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src/Fqsen.php',
@@ -9398,6 +9438,7 @@ class ComposerStaticInitbfe12996eeecb6fdc8713a9fd9d431f8
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitbfe12996eeecb6fdc8713a9fd9d431f8::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitbfe12996eeecb6fdc8713a9fd9d431f8::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitbfe12996eeecb6fdc8713a9fd9d431f8::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitbfe12996eeecb6fdc8713a9fd9d431f8::$classMap;
 
         }, null, ClassLoader::class);
